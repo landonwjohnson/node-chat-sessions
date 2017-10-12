@@ -5,7 +5,9 @@ module.exports = {
   create: ( req, res ) => {
     const { text, time } = req.body;
     const { user } = req.session;
+
     messages.push({ id, text, time });
+    user.messages.push({id, text, time});
     id++;
     res.status(200).send( messages );
   },
@@ -41,3 +43,4 @@ module.exports = {
     res.status(200).send( user.messages );
   }
 };
+
